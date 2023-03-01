@@ -19,5 +19,25 @@ public class ChessArea extends JFrame {
         int height = Toolkit.getDefaultToolkit().getScreenSize().height / 2;
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setBounds(width / 2, height / 4, 800,850);
+        JPanel pn = new JPanel(){
+            public void paint(Graphics g)
+            {
+                boolean white = true;
+                for(int i = 0; i < 8; i++)
+                {
+                    for(int j = 0; j < 8; j++)
+                    {
+                        if(white) g.setColor(Color.white);
+                        else g.setColor(Color.lightGray);
+                        g.fillRect(i * 90, j * 90, 90, 90);
+                        white = !white;
+                    }
+                    white = !white;
+                }
+            }
+        };
+        JLabel text = new JLabel("Essa");
+        this.getContentPane().add(text, BorderLayout.NORTH);
+        this.getContentPane().add(pn, BorderLayout.CENTER);
     }
 }
